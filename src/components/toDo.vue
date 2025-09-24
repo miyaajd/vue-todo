@@ -84,9 +84,9 @@ button {
 }
 .add {
   font-size: 18px;
-  border: 1px solid #999;
-  border-radius: 50%;
-  padding: 5px 10px;
+  /* border: 1px solid #999; */
+  /* border-radius: 50%; */
+  /* padding: 5px 10px; */
   color: #999;
 }
 .delete {
