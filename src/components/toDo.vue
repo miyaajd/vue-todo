@@ -80,6 +80,7 @@ button {
   background-color: transparent;
   margin-left: 16px;
   cursor: pointer;
+  display: inline-block;
 }
 .add {
   font-size: 18px;
