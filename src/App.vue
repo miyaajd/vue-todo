@@ -1,8 +1,11 @@
-<script setup></script>
+<script setup>
+import toDo from "./components/toDo.vue"
+</script>
 
 <template>
   <div class="wrap">
     <h1>◎ To Do List ◉</h1>
+    <toDo />
   </div>
 </template>
 
@@ -10,11 +13,22 @@
 .wrap{
   width: 100%;
   height: 100vh;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h1 {
   width: 100%;
   text-align: center;
-  padding: 50px;
-  color: #333;
+  padding: 50px 0;
+  color: #fff;
+  font-weight: 500;
+}
+@media screen and (max-width:390px) {
+  h1{
+    font-size: 24px;
+    padding: 30px 0;
+  }
 }
 </style>
