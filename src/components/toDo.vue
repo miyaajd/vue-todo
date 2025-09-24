@@ -116,6 +116,7 @@ span {
 @media screen and (max-width: 768px) {
   .toDo {
     width: 320px;
+    height: 400px;
   }
   span {
     font-size: 14px;
