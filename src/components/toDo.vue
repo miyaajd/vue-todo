@@ -21,9 +21,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 const newTodo = ref('')
 const todos = ref([])
+
+watch(
+  todos,
+  (val) => {
+    localStorage.setItem("todos", JSON.stringify(val))
+  },
+  { deep: true }
+)
+
+onMounted(() => {
+  const saved = localStorage.getItem("todos")
+  if (saved) {
+    todos.value = JSON.parse(saved)
+  }
+})
 
 const addTodo = () => {
   if (!newTodo.value.trim()) return
