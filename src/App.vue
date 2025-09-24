@@ -25,7 +25,7 @@ h1 {
   color: #fff;
   font-weight: 500;
 }
-@media screen and (max-width:390px) {
+@media screen and (max-width:768px) {
   h1{
     font-size: 24px;
     padding: 30px 0;
