@@ -1,11 +1,12 @@
 <script setup>
-import toDo from "./components/toDo.vue"
+import ToDo from './components/ToDo.vue';
+
 </script>
 
 <template>
   <div class="wrap">
     <h1>◎ To Do List ◉</h1>
-    <toDo />
+    <ToDo/>
   </div>
 </template>
 

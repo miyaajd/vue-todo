@@ -93,6 +93,9 @@ button {
   color: dodgerblue;
   margin-left: 16px;
 }
+.input{
+  display: flex;
+}
 input {
   padding: 8px 24px;
   outline: none;
