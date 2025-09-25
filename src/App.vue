@@ -1,17 +1,15 @@
 <script setup>
-import ToDo from './components/ToDo.vue';
-
+import Todo from './components/Todo.vue'
 </script>
 
 <template>
   <div class="wrap">
     <h1>◎ To Do List ◉</h1>
-    <ToDo/>
+    <Todo />
   </div>
 </template>
-
 <style scoped>
-.wrap{
+.wrap {
   width: 100%;
   height: 100vh;
   background-color: #333;
@@ -26,8 +24,8 @@ h1 {
   color: #fff;
   font-weight: 500;
 }
-@media screen and (max-width:768px) {
-  h1{
+@media screen and (max-width: 768px) {
+  h1 {
     font-size: 24px;
     padding: 30px 0;
   }
