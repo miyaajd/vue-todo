@@ -11,8 +11,9 @@
     </div>
     <ul>
       <li v-for="(todo, index) in todos" :key="index">
+        <img src="/public/icons/kitty.png" alt="kitty" class="kitty" />
         <span :class="{ done: todo.done }" @click="toggleDone(index)"
-          >•&nbsp;&nbsp;&nbsp;&nbsp; {{ todo.text }}</span
+          >&nbsp;&nbsp; {{ todo.text }}</span
         >
         <button class="delete" @click="removeTodo(index)">Delete</button>
       </li>
@@ -28,13 +29,13 @@ const todos = ref([])
 watch(
   todos,
   (val) => {
-    localStorage.setItem("todos", JSON.stringify(val))
+    localStorage.setItem('todos', JSON.stringify(val))
   },
-  { deep: true }
+  { deep: true },
 )
 
 onMounted(() => {
-  const saved = localStorage.getItem("todos")
+  const saved = localStorage.getItem('todos')
   if (saved) {
     todos.value = JSON.parse(saved)
   }
@@ -93,7 +94,7 @@ button {
   color: dodgerblue;
   margin-left: 16px;
 }
-.input{
+.input {
   display: flex;
 }
 input {
@@ -110,11 +111,13 @@ li {
   margin: 10px 0;
   text-wrap: wrap;
   word-break: break-word;
+  display: flex;
 }
 span {
   cursor: pointer;
   font-size: 18px;
   color: #333;
+  /* background-color: #aaa; */
 }
 @media screen and (max-width: 768px) {
   .toDo {
@@ -127,5 +130,12 @@ span {
   .delete {
     font-size: 12px;
   }
+}
+.kitty {
+  width: 20px;
+  display: inline-block;
+  /* background-color: #ddd; */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 </style>
