@@ -112,6 +112,7 @@ li {
   text-wrap: wrap;
   word-break: break-word;
   display: flex;
+  align-items: center;
 }
 span {
   cursor: pointer;
