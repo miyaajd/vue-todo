@@ -43,7 +43,7 @@ onMounted(() => {
 
 const addTodo = () => {
   if (todos.value.length >= 12) {
-    alert('최대 12개까지만 추가가능 👻 완료한 일은 Delete 하쇼 !')
+    alert('최대 12개까지만 추가가능 👻 완료한 일은 Delete ㄱㄱ')
     return
   }
   if (!newTodo.value.trim()) return
