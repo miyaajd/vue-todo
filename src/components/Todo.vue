@@ -13,7 +13,7 @@
       <li v-for="(todo, index) in todos" :key="index">
         <img src="/public/icons/kitty.png" alt="kitty" class="kitty" />
         <span :class="{ done: todo.done }" @click="toggleDone(index)"
-          >&nbsp;&nbsp; {{ todo.text }}</span
+          >{{ todo.text }}</span
         >
         <button class="delete" @click="removeTodo(index)">Delete</button>
       </li>
@@ -82,6 +82,7 @@ button {
   margin-left: 16px;
   cursor: pointer;
   display: inline-block;
+  text-wrap: nowrap;
 }
 .add {
   font-size: 18px;
@@ -115,6 +116,7 @@ li {
   align-items: center;
 }
 span {
+  margin-left: 16px;
   cursor: pointer;
   font-size: 18px;
   color: #333;
