@@ -42,6 +42,10 @@ onMounted(() => {
 })
 
 const addTodo = () => {
+  if (todos.value.length >= 12) {
+    alert('최대 12개까지만 추가가능 👻 완료한 일은 Delete 하쇼 !')
+    return
+  }
   if (!newTodo.value.trim()) return
   todos.value.push({ text: newTodo.value, done: false })
   newTodo.value = ''
@@ -54,6 +58,8 @@ const removeTodo = (index) => {
 const toggleDone = (index) => {
   todos.value[index].done = !todos.value[index].done
 }
+// 최대 li 개수 
+
 </script>
 
 <style scoped>
