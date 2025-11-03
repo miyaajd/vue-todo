@@ -69,7 +69,7 @@ const toggleDone = (index) => {
 .toDo {
   width: 100%;
   max-width: 500px;
-  height: 600px;
+  height: 550px;
   max-height: 100000000000px;
   border-radius: 16px;
   background-color: #fafafa;
