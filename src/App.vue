@@ -9,11 +9,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import Todo from './components/Todo.vue'
 const isDark = ref(false)
+
+// 로드 시 로컬 스토리지에서 모드 불러오기
+onMounted(() => {
+  const saveMode = localStorage.getItem('isDark')
+  if (saveMode !== null) {
+    isDark.value = saveMode === 'true'
+    updateMode()
+  }
+})
+
+// 다크모드 토글
 const toggleDarkMode = () => {
   isDark.value = !isDark.value
+  updateMode()
+  // 로컬 스토리지에 저장
+  localStorage.setItem('isDark', isDark.value)
+}
+
+const updateMode = () => {
   if (isDark.value) {
     document.documentElement.classList.add('dark')
   } else {
@@ -26,6 +43,10 @@ const toggleDarkMode = () => {
   }
 }
 
+// isDark 값 바뀔 때마다 ToDo 컴포넌트에 반영되도록 감시
+watch(isDark, (newVal)=>{
+  localStorage.setItem('isDark', newVal)
+})
 </script>
 
 <style scoped>
