@@ -1,5 +1,5 @@
 <template>
-  <div class="toDo">
+  <div :class="['toDo', {dark : props.isDark}]">
     <div class="input">
       <input
         type="text"
@@ -12,9 +12,7 @@
     <ul>
       <li v-for="(todo, index) in todos" :key="index">
         <img src="/public/icons/kitty.png" alt="kitty" class="kitty" />
-        <span :class="{ done: todo.done }" @click="toggleDone(index)"
-          >{{ todo.text }}</span
-        >
+        <span :class="{ done: todo.done }" @click="toggleDone(index)">{{ todo.text }}</span>
         <button class="delete" @click="removeTodo(index)">Delete</button>
       </li>
     </ul>
@@ -22,9 +20,15 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, defineProps } from 'vue'
 const newTodo = ref('')
 const todos = ref([])
+
+// props로 다크모드 제어
+const props = defineProps({
+  isDark : Boolean
+})
+
 
 watch(
   todos,
@@ -43,7 +47,7 @@ onMounted(() => {
 
 const addTodo = () => {
   if (todos.value.length >= 12) {
-    alert('최대 12개까지만 추가가능 👻 완료한 일은 Delete ㄱㄱ')
+    alert('Maximum reached. Please remove some items.')
     return
   }
   if (!newTodo.value.trim()) return
@@ -58,7 +62,6 @@ const removeTodo = (index) => {
 const toggleDone = (index) => {
   todos.value[index].done = !todos.value[index].done
 }
-// 최대 li 개수 
 
 </script>
 
@@ -92,9 +95,6 @@ button {
 }
 .add {
   font-size: 18px;
-  /* border: 1px solid #999; */
-  /* border-radius: 50%; */
-  /* padding: 5px 10px; */
   color: #999;
 }
 .delete {
@@ -125,13 +125,21 @@ span {
   margin-left: 16px;
   cursor: pointer;
   font-size: 18px;
-  color: #333;
-  /* background-color: #aaa; */
+  color: #555;
+}
+/* 다크모드 스타일 */
+.toDo.dark{
+  background-color: #3e3e3e;
+}
+.toDo.dark span{
+  color: #fefefe;
+}
+.toDo.dark .done{
+  color: #999;
 }
 @media screen and (max-width: 768px) {
   .toDo {
     width: 320px;
-    /* height: 400px; */
   }
   span {
     font-size: 14px;
@@ -143,7 +151,6 @@ span {
 .kitty {
   width: 20px;
   display: inline-block;
-  /* background-color: #ddd; */
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }

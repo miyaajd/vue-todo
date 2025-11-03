@@ -1,11 +1,24 @@
 <script setup>
+import { ref } from 'vue';
 import Todo from './components/Todo.vue'
+const isDark  = ref(false)
+const toggleDarkMode  = ()=>{
+  isDark.value = !isDark.value
+  if(isDark.value){
+    document.documentElement.classList.add("dark")
+  }else{
+    document.documentElement.classList.remove("dark")
+  }
+}
 </script>
 
 <template>
   <div class="wrap">
-    <h1>◎ To Do List ◉</h1>
-    <Todo />
+    <h1>To Do List</h1>
+    <button @click="toggleDarkMode">
+      {{  isDark ? "Light Mode" : "Dark Mode" }}
+    </button> 
+    <Todo :is-dark="isDark"/>
   </div>
 </template>
 <style scoped>
@@ -13,7 +26,7 @@ import Todo from './components/Todo.vue'
   width: 100%;
   height: 100vh;
   max-height: 100%;
-  background-color: #333;
+  background-color: #fafdff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,9 +34,31 @@ import Todo from './components/Todo.vue'
 h1 {
   width: 100%;
   text-align: center;
-  padding: 50px 0;
-  color: #fff;
+  padding: 50px 0 0;
+  color: #555;
   font-weight: 500;
+}
+/* 토글버튼 스타일 */
+button{
+  margin: 30px 0;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: none;
+  background-color: #1e1e1e;
+  color: #fefefe;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* 다크모드 스타일 */
+.dark .wrap {
+  background-color: #1e1e1e;
+}
+.dark h1{
+  color: #fefefe;
+}
+.dark button {
+  background-color: #fefefe;
+  color: #1e1e1e;
 }
 @media screen and (max-width: 768px) {
   h1 {
