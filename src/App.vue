@@ -19,13 +19,13 @@ const toggleDarkMode = () => {
   } else {
     document.documentElement.classList.remove('dark')
   }
+  // 브라우저 상단 theme-color 변경
+  const metaThemeColor = document.querySelector('meta[name=theme-color]')
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', isDark.value ? '#1e1e1e' : '#fafdff')
+  }
 }
 
-// 브라우저 상단 theme-color 변경
-const metaThemeColor = document.querySelector('meta[name=theme-color]')
-if(metaThemeColor){
-  metaThemeColor.setAttribute("content", isDark.value ? "#1e1e1e" : "#fafdff")
-}
 </script>
 
 <style scoped>
