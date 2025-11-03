@@ -41,7 +41,7 @@ h1 {
 }
 /* 토글버튼 스타일 */
 button{
-  margin: 10px 0 20px 0;
+  margin:20px 0;
   padding: 8px 16px;
   border-radius: 50px;
   border: none;
