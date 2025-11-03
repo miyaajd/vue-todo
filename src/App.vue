@@ -1,26 +1,33 @@
-<script setup>
-import { ref } from 'vue';
-import Todo from './components/Todo.vue'
-const isDark  = ref(false)
-const toggleDarkMode  = ()=>{
-  isDark.value = !isDark.value
-  if(isDark.value){
-    document.documentElement.classList.add("dark")
-  }else{
-    document.documentElement.classList.remove("dark")
-  }
-}
-</script>
-
 <template>
   <div class="wrap">
     <h1>To Do List</h1>
     <button @click="toggleDarkMode">
-      {{  isDark ? "Light Mode" : "Dark Mode" }}
-    </button> 
-    <Todo :is-dark="isDark"/>
+      {{ isDark ? 'Light Mode' : 'Dark Mode' }}
+    </button>
+    <Todo :is-dark="isDark" />
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import Todo from './components/Todo.vue'
+const isDark = ref(false)
+const toggleDarkMode = () => {
+  isDark.value = !isDark.value
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}
+
+// 브라우저 상단 theme-color 변경
+const metaThemeColor = document.querySelector('meta[name=theme-color]')
+if(metaThemeColor){
+  metaThemeColor.setAttribute("content", isDark.value ? "#1e1e1e" : "#fafdff")
+}
+</script>
+
 <style scoped>
 .wrap {
   width: 100%;
@@ -40,8 +47,8 @@ h1 {
   font-size: 24px;
 }
 /* 토글버튼 스타일 */
-button{
-  margin:20px 0;
+button {
+  margin: 20px 0;
   padding: 8px 16px;
   border-radius: 50px;
   border: none;
@@ -54,7 +61,7 @@ button{
 .dark .wrap {
   background-color: #1e1e1e;
 }
-.dark h1{
+.dark h1 {
   color: #fefefe;
 }
 .dark button {
