@@ -40,7 +40,7 @@ h1 {
 }
 /* 토글버튼 스타일 */
 button{
-  margin: 30px 0;
+  margin: 20px 0;
   padding: 8px 16px;
   border-radius: 50px;
   border: none;
@@ -63,7 +63,7 @@ button{
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 24px;
-    padding: 30px 0;
+    padding: 30px 0 0;
   }
 }
 </style>
