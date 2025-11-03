@@ -37,16 +37,17 @@ h1 {
   padding: 50px 0 0;
   color: #555;
   font-weight: 500;
+  font-size: 24px;
 }
 /* 토글버튼 스타일 */
 button{
-  margin: 20px 0;
+  margin: 10px 0 20px 0;
   padding: 8px 16px;
   border-radius: 50px;
   border: none;
   background-color: #1e1e1e;
   color: #fefefe;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
 }
 /* 다크모드 스타일 */
