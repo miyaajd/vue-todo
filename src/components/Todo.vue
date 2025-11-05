@@ -1,5 +1,5 @@
 <template>
-  <div :class="['toDo', {dark : props.isDark}]">
+  <div :class="['toDo', { dark: props.isDark }]">
     <div class="input">
       <input
         type="text"
@@ -11,8 +11,10 @@
     </div>
     <ul>
       <li v-for="(todo, index) in todos" :key="index">
-        <img src="/public/icons/kitty.png" alt="kitty" class="kitty" />
-        <span :class="{ done: todo.done }" @click="toggleDone(index)">{{ todo.text }}</span>
+        <div class="list">
+          <img src="/public/icons/kitty.png" alt="kitty" class="kitty" @click="editTodo(index)" />
+          <span :class="{ done: todo.done }" @click="toggleDone(index)">{{ todo.text }}</span>
+        </div>
         <button class="delete" @click="removeTodo(index)">Delete</button>
       </li>
     </ul>
@@ -26,9 +28,8 @@ const todos = ref([])
 
 // props로 다크모드 제어
 const props = defineProps({
-  isDark : Boolean
+  isDark: Boolean,
 })
-
 
 watch(
   todos,
@@ -63,6 +64,14 @@ const toggleDone = (index) => {
   todos.value[index].done = !todos.value[index].done
 }
 
+// 추가된 투두 내용 수정
+const editTodo = (index) => {
+  const current = todos.value[index].text
+  const updated = prompt('Edit To-Do', current)
+  if (updated !== null && updated.trim() !== '') {
+    todos.value[index].text = updated.trim()
+  }
+}
 </script>
 
 <style scoped>
@@ -99,7 +108,7 @@ button {
 }
 .delete {
   color: dodgerblue;
-  margin-left: 16px;
+  margin-left: 0;
 }
 .input {
   display: flex;
@@ -111,13 +120,21 @@ input {
   border: 1px solid #999;
 }
 ul {
+  width: 90%;
+  margin: auto;
   list-style: none;
   margin-top: 10px;
 }
 li {
   margin: 10px 0;
+  width: 100%;
   text-wrap: wrap;
   word-break: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list {
   display: flex;
   align-items: center;
 }
@@ -128,13 +145,13 @@ span {
   color: #555;
 }
 /* 다크모드 스타일 */
-.toDo.dark{
+.toDo.dark {
   background-color: #3e3e3e;
 }
-.toDo.dark span{
+.toDo.dark span {
   color: #fefefe;
 }
-.toDo.dark .done{
+.toDo.dark .done {
   color: #999;
 }
 @media screen and (max-width: 768px) {
@@ -153,5 +170,6 @@ span {
   display: inline-block;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  cursor: pointer;
 }
 </style>
