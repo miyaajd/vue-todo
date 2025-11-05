@@ -113,7 +113,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .modal-box {
   position: absolute;
@@ -157,9 +157,6 @@ button {
 }
 .dark .howto {
   color: #9e9e9e;
-}
-.dark .modal {
-  background-color: rgba(0, 0, 0, 0.8);
 }
 .dark .modal-box {
   background-color: #1e1e1e;

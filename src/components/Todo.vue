@@ -97,7 +97,7 @@ button {
   padding: 5px 8px;
   border: none;
   background-color: transparent;
-  margin-left: 16px;
+  /* margin-left: 16px; */
   cursor: pointer;
   display: inline-block;
   text-wrap: nowrap;
