@@ -15,7 +15,7 @@
           <img src="/public/icons/kitty.png" alt="kitty" class="kitty" @click="editTodo(index)" />
           <span :class="{ done: todo.done }" @click="toggleDone(index)">{{ todo.text }}</span>
         </div>
-        <button class="delete" @click="removeTodo(index)">Delete</button>
+        <button class="delete" @click="removeTodo(index)">Del</button>
       </li>
     </ul>
   </div>
@@ -112,15 +112,18 @@ button {
 }
 .input {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 input {
   padding: 8px 24px;
   outline: none;
   border-radius: 5px;
   border: 1px solid #999;
+  width: 100%;
 }
 ul {
-  width: 90%;
+  width: 95%;
   margin: auto;
   list-style: none;
   margin-top: 10px;
