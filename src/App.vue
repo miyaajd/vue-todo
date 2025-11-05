@@ -119,7 +119,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 90%;
+  min-width: 93%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 50px 20px 40px 20px;
