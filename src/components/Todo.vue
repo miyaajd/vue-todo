@@ -31,6 +31,7 @@ const props = defineProps({
   isDark: Boolean,
 })
 
+// todos 저장 (localStorage sync)
 watch(
   todos,
   (val) => {
@@ -39,6 +40,7 @@ watch(
   { deep: true },
 )
 
+// 앱 로드 시 저장된 투두 불러오기
 onMounted(() => {
   const saved = localStorage.getItem('todos')
   if (saved) {
@@ -46,6 +48,7 @@ onMounted(() => {
   }
 })
 
+// 투두추가
 const addTodo = () => {
   if (todos.value.length >= 12) {
     alert('Maximum reached. Please remove some items.')
@@ -56,10 +59,12 @@ const addTodo = () => {
   newTodo.value = ''
 }
 
+// 투두삭제
 const removeTodo = (index) => {
   todos.value.splice(index, 1)
 }
 
+// 완료 상태 토글 (텍스트 비활성화 토글기능)
 const toggleDone = (index) => {
   todos.value[index].done = !todos.value[index].done
 }
@@ -97,7 +102,6 @@ button {
   padding: 5px 8px;
   border: none;
   background-color: transparent;
-  /* margin-left: 16px; */
   cursor: pointer;
   display: inline-block;
   text-wrap: nowrap;
@@ -157,6 +161,7 @@ span {
 .toDo.dark .done {
   color: #999;
 }
+/* 모바일 스타일 */
 @media screen and (max-width: 768px) {
   .toDo {
     width: 320px;

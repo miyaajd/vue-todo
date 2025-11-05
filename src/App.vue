@@ -28,7 +28,7 @@ import { onMounted, ref, watch } from 'vue'
 import Todo from './components/Todo.vue'
 const isDark = ref(false)
 
-// 로드 시 로컬 스토리지에서 모드 불러오기
+// 로드 시 로컬 스토리지에서 테마 상태 불러오기
 onMounted(() => {
   const saveMode = localStorage.getItem('isDark')
   if (saveMode !== null) {
@@ -45,6 +45,7 @@ const toggleDarkMode = () => {
   localStorage.setItem('isDark', isDark.value)
 }
 
+// html class 및 meta 색상 변경
 const updateMode = () => {
   if (isDark.value) {
     document.documentElement.classList.add('dark')
@@ -63,7 +64,7 @@ watch(isDark, (newVal) => {
   localStorage.setItem('isDark', newVal)
 })
 
-// showModal
+// showModal (모달 온/ 오프)
 const modal = ref(false)
 const showModal = () => {
   modal.value = !modal.value
@@ -144,6 +145,7 @@ button {
   border: 1px solid #1e1e1e;
   margin: 0;
 }
+
 /* 다크모드 스타일 */
 .dark .wrap {
   background-color: #1e1e1e;
@@ -172,6 +174,8 @@ button {
   background-color: #1e1e1e;
   border-color: #fafafa;
 }
+
+/* 모바일 스타일 */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 24px;
